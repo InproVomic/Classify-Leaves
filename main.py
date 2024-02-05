@@ -71,10 +71,10 @@ resnet_50 = resnet_50.cuda()
 loss_fn = nn.CrossEntropyLoss()
 loss_fn = loss_fn.cuda()
 
-learning_rate = 0.0001
+learning_rate = 0.00001
 optimizer = torch.optim.Adam(resnet_50.parameters(), lr=learning_rate, weight_decay=0.001)
 
-epoch = 20
+epoch = 10
 
 resnet_50.train()
 for i in range(epoch):
@@ -89,7 +89,7 @@ for i in range(epoch):
         loss.backward()
         optimizer.step()
     print("第{}轮训练，loss:{}".format(i+1, str(loss.item())))
-    if i+1 % 10 == 0:
+    if (i+1) % 10 == 0:
         torch.save(resnet_50, 'resnet50_{}.pth'.format(epoch+1))
 
 dict_inverse = {v: k for k, v in train_data.label_to_int.items()}
