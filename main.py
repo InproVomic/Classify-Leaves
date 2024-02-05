@@ -71,10 +71,10 @@ resnet_50 = resnet_50.cuda()
 loss_fn = nn.CrossEntropyLoss()
 loss_fn = loss_fn.cuda()
 
-learning_rate = 0.0001
+learning_rate = 0.000015
 optimizer = torch.optim.Adam(resnet_50.parameters(), lr=learning_rate, weight_decay=0.001)
 
-epoch = 20
+epoch = 10
 
 resnet_50.train()
 for i in range(epoch):
